@@ -1,0 +1,55 @@
+<node value="ROOT">
+  <node value="S">
+    <node value="S">
+      <node value="NP">
+        <node value="NNP">
+          <leaf value="Ram"/>
+        </node>
+      </node>
+      <node value="VP">
+        <node value="VBZ">
+          <leaf value="is"/>
+        </node>
+        <node value="VP">
+          <node value="VBG">
+            <leaf value="eating"/>
+          </node>
+          <node value="NP">
+            <node value="NNS">
+              <leaf value="fruits"/>
+            </node>
+            <node value="CC">
+              <leaf value="and"/>
+            </node>
+            <node value="NNS">
+              <leaf value="biscuits"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node value="CC">
+      <leaf value="and"/>
+    </node>
+    <node value="S">
+      <node value="NP">
+        <node value="NNP">
+          <leaf value="Ram"/>
+        </node>
+      </node>
+      <node value="VP">
+        <node value="VBZ">
+          <leaf value="is"/>
+        </node>
+        <node value="VP">
+          <node value="VBG">
+            <leaf value="sleeping"/>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node value=".">
+      <leaf value="."/>
+    </node>
+  </node>
+</node>

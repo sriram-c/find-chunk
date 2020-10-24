@@ -1,0 +1,14 @@
+Your stanford parser path set is :/home/sriram/alignment/anusaaraka/Parsers/stanford-parser/stanford-parser-4.0.0
+Ram is eating fruits and biscuits and Ram is sleeping.
+(ROOT (S (S (NP (NNP Ram)) (VP (VBZ is) (VP (VBG eating) (NP (NNS fruits) (CC and) (NNS biscuits))))) (CC and) (S (NP (NNP Ram)) (VP (VBZ is) (VP (VBG sleeping)))) (. .)))
+--------
+S2 : Ram_1 is_2 eating_3 fruits_4 and_5 biscuits_6 and_7 Ram_8 is_9 sleeping_10 ._11
+S3 : Ram_1 is_2 eating_3 fruits_4 and_5 biscuits_6
+NP4 : Ram_1
+VP_LWG4 : is_2 eating_3
+NP6 : fruits_4 and_5 biscuits_6
+CC7 : NNS7 - and - NNS7
+CC3 : S3 - and - S3
+S3 : Ram_8 is_9 sleeping_10
+NP4 : Ram_8
+VP_LWG4 : is_9 sleeping_10
