@@ -4,11 +4,16 @@ from bs4 import BeautifulSoup, Tag, NavigableString
 
 
 
-def find_leaf(tag, phrase):
+def find_leaf(tag, phrase, flag):
     tmp_wd = []
     tmp_id = []
 
-    if(tag['value'] == 'CC'):
+    if(flag):
+        for wd in tag.find_all('leaf'):
+            tmp_wd.append(wd['value'] + '_' + str(wd['id']))
+        phrase.append([tag['value'] + str(tag['id']), tmp_wd])
+
+    elif(tag['value'] == 'CC'):
         cc_wd = tag.find_all('leaf')[0]['value']
 
         prev_sib = list(tag.previous_siblings)[1]
@@ -18,6 +23,8 @@ def find_leaf(tag, phrase):
         next_sib1 = next_sib['value'] + str(next_sib['id'])
 
         phrase.append([tag['value']+str(tag['id']), prev_sib1, next_sib1, cc_wd])
+        find_leaf(prev_sib, phrase, 1)
+        find_leaf(next_sib, phrase, 1)
 
     elif (re.match( r'^NP|WHNP|PP|WHPP|ADJP|WHADJP|ADVP|WHAVP|X|SBAR|NAC|NML|CONJP|FRAG|INTJ|LST|NAC|NX|QP|PRC|PRN|PRT|QP|RRC|UCP|ROOT|S|,$', tag['value']) and (tag.name != 'leaf')):
         for wd in tag.find_all('leaf'):
@@ -49,10 +56,10 @@ def process_tag(tag, phrase):
 
 
             elif(re.match(r'CC',tag['value'])):
-                find_leaf(tag, phrase)
+                find_leaf(tag, phrase, 0)
 
             else:
-                find_leaf(tag, phrase)
+                find_leaf(tag, phrase, 0)
                 for tag1 in tag.contents:
                     if (isinstance(tag1, Tag)):
                         process_tag(tag1, phrase)
@@ -81,16 +88,14 @@ for ch in root.contents:
         process_tag(ch,phrase)
 
 phrase_dic = {}
+
+
 count = 1
 for p in phrase:
     if(re.match(r'CC',p[0])):
         phrase_dic[p[0]] = p[1]+'-'+p[3]+'-'+p[2]
     else:
-        if p[0] in phrase_dic:
-            new_id = p[0]+'_'+str(count)
-            count += 1
-            phrase_dic[new_id] = ' '.join(p[1])
-        else:
+        if p[0] not in phrase_dic:
             phrase_dic[p[0]] = ' '.join(p[1])
 
 for key in phrase_dic:

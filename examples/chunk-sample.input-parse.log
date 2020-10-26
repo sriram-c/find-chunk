@@ -4,4 +4,4 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 Parsing file: examples/chunk-sample.input
 Parsing [sent. 1 len. 11]: Ram is eating fruits and biscuits and Ram is sleeping .
 Parsed file: examples/chunk-sample.input [1 sentences].
-Parsed 11 words in 1 sentences (60.77 wds/sec; 5.52 sents/sec).
+Parsed 11 words in 1 sentences (49.11 wds/sec; 4.46 sents/sec).
